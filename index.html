@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Review Da Pizza Hub</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .review-box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 320px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .star {
+      font-size: 35px;
+      cursor: pointer;
+      color: #ccc;
+      transition: 0.2s;
+    }
+
+    .star.selected {
+      color: gold;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: #ff4d4d;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #e63939;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="review-box">
+    <h1>Review Da Pizza Hub</h1>
+
+    <div class="stars">
+      <span class="star" onclick="selectStar(1)">★</span>
+      <span class="star" onclick="selectStar(2)">★</span>
+      <span class="star" onclick="selectStar(3)">★</span>
+      <span class="star" onclick="selectStar(4)">★</span>
+      <span class="star" onclick="selectStar(5)">★</span>
+    </div>
+
+    <button onclick="submitReview()">Submit</button>
+
+    <div id="message"></div>
+  </div>
+
+  <script>
+    let rating = 0;
+
+    function selectStar(num) {
+      rating = num;
+
+      let stars = document.querySelectorAll('.star');
+
+      stars.forEach((star, index) => {
+        if (index < num) {
+          star.classList.add('selected');
+        } else {
+          star.classList.remove('selected');
+        }
+      });
+    }
+
+    function submitReview() {
+      if (rating === 0) {
+        alert("Please select a rating first.");
+        return;
+      }
+
+      if (rating <= 2) {
+        document.getElementById("message").innerText =
+          "Thank you for your review!";
+      } else {
+        // Replace with your own link
+        window.location.href = "https://g.page/r/CRrWbfDpwX8OEBM/review";
+      }
+    }
+  </script>
+
+</body>
+</html>
